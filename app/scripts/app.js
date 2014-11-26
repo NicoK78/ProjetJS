@@ -8,11 +8,11 @@
  *
  * Main module of the application.
  */
- angular
-  .module('projetJsApp', [
+  var projetJsApp = angular.module('projetJsApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
+    'ngDialog',
     'ngMessages',
     'ngResource',
     'ngRoute',
@@ -20,17 +20,24 @@
     'ngTouch',
     'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+  .config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/views/main.html',
+        controller: 'homeCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'gameCtrl'
+      })
+      .when('/credits', {
+        templateUrl: 'views/credits.html',
+        controller: 'creditsCtrl'
+      })
+      .when('/option', {
+        templateUrl: 'views/option.html',
+        controller: 'optionCtrl'
       })
       .otherwise({
-        redirectTo: '/'
-      });
-  });
+        templateUrl: "/404.html"
+     });
+}]);
